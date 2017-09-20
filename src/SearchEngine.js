@@ -65,7 +65,7 @@ module.exports = function (options) {
             {
                 AND: {
                     'epubTitle': [preparer.normalizeEpupTitle(title)],
-                    'body': [searchFor]
+                    'body': searchFor.split(' ')
                 }
             };
 
@@ -138,6 +138,9 @@ module.exports = function (options) {
 // private 
     function getIndexOptions() {
         return {
+            nGramLength: [0, 1, 2, 3],
+            preserveCase: false,
+            stopwords: [],
             fieldOptions: [
                 {fieldName: 'epubTitle', searchable: false, store: true},
                 {fieldName: 'spineItemPath', searchable: false, store: true},
