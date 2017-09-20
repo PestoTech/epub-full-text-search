@@ -89,7 +89,7 @@ module.exports = function (options) {
         q.query = {
             AND: {
                 'epubTitle': [_Preparer2.default.normalizeEpupTitle(title)],
-                'body': [searchFor]
+                'body': searchFor.split(' ')
             }
         };
 
@@ -161,6 +161,7 @@ module.exports = function (options) {
         return {
             nGramLength: [0, 1, 2, 3],
             preserveCase: false,
+            stopwords: [],
             fieldOptions: [{ fieldName: 'epubTitle', searchable: false, store: true }, { fieldName: 'spineItemPath', searchable: false, store: true }, { fieldName: 'href', searchable: false, store: true }, { fieldName: 'baseCfi', searchable: false, store: true }, { fieldName: 'id', searchable: false, store: true }, { fieldName: 'filename', searchable: true, store: true }, { fieldName: 'title', searchable: true, store: false }, { fieldName: 'body', searchable: true, store: false }]
         };
     }
